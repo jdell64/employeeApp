@@ -15,8 +15,8 @@ services:
   mongo:
     image: mongo
     container_name: employee-app
-#    ports:  # for demo/debug purpose only
-#      - 27018:27017
+    ports:  # for demo/debug purpose only
+      - 27018:27017
     volumes:
       - $HOME/data/employee-app-data:/data/db
       - $HOME/data/employee-app-bkp:/data/bkp
