@@ -17,6 +17,7 @@ http://www.springboottutorial.com/spring-boot-validation-for-rest-services
 ### TODO:
 - error message handler to swallow error messages for pen testers
 - build produces erroneous error because it depends on mongodb
+- add "not null" validators
 
 to build:
 ```

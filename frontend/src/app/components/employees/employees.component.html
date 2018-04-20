@@ -1,5 +1,6 @@
-<div>
+<div id="employeeHolder">
   <div *ngFor="let employee of employees">
-    {{employee | json}}
+    <!--{{employee | json}}-->
+    <app-employee [employee]="employee"></app-employee>
   </div>
 </div>

@@ -1,4 +1,10 @@
-<h1>
-  {{title}}
-</h1>
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-button>{{title}}</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div id="mainContent">
+  <router-outlet></router-outlet>
+</div>
+
