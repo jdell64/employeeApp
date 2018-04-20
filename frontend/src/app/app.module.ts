@@ -1,8 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {EmployeesComponent} from './components/employees/employees.component';
@@ -10,24 +8,35 @@ import {EmployeesService} from './services/employees.service';
 import {HttpClientModule} from '@angular/common/http';
 import {MyMaterialModule} from './modules/my-material/my-material.module';
 import {EmployeeComponent} from './components/employee/employee.component';
-import {UserPictureService} from './services/user-picture.service';
 import {TitleCasePipe} from '@angular/common';
+import {EditEmployeeDialogComponent} from './components/edit-employee-dialog/edit-employee-dialog.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { SplitPipe } from './pipes/split.pipe';
+import { JoinPipe } from './pipes/join.pipe';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeesComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    EditEmployeeDialogComponent,
+    SplitPipe,
+    JoinPipe,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MyMaterialModule
+    MyMaterialModule,
+    BrowserAnimationsModule,
+
   ],
-  providers: [EmployeesService, UserPictureService, TitleCasePipe],
+  entryComponents: [EditEmployeeDialogComponent, ConfirmDialogComponent],
+  providers: [EmployeesService, TitleCasePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule {

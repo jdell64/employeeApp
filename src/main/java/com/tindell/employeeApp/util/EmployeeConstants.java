@@ -3,7 +3,7 @@ package com.tindell.employeeApp.util;
 public class EmployeeConstants {
 
     public static enum PositionCategory {
-        INDERECT, DIRECT, PROGRAM_MANAGER, DIRECTOR, EXECUTIVE
+        INDIRECT, DIRECT, PROGRAM_MANAGER, DIRECTOR, EXECUTIVE
     }
 
     public static enum States {

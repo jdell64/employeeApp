@@ -1,0 +1,67 @@
+<form class="employee-form">
+  <div id="nameContainer" class="flexboxContainer">
+    <mat-form-field class="medInput">
+      <input matInput placeholder="First name" [(ngModel)]="data.employee['firstName']" name="firstName">
+    </mat-form-field>
+
+    <mat-form-field class="xSmallInput">
+      <input matInput placeholder="Middle initial" [(ngModel)]="data.employee['middleInitial']" name="middleInitial">
+    </mat-form-field>
+
+    <mat-form-field class="medInput">
+      <input matInput placeholder="Last name" [(ngModel)]="data.employee['lastName']" name="lastName">
+    </mat-form-field>
+  </div>
+
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Address" [(ngModel)]="data.employee['address1']" name="address1"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <textarea name="address2" matInput placeholder="Address 2" [(ngModel)]="data.employee['address2']"></textarea>
+  </mat-form-field>
+
+  <div id="addressContainer" class="flexboxContainer">
+    <mat-form-field>
+      <input matInput placeholder="City" [(ngModel)]="data.employee['city']" name="city">
+    </mat-form-field>
+
+    <mat-form-field class="smallInput">
+      <mat-select placeholder="State" name="state" [(ngModel)]="data.employee['state']">
+        <mat-option *ngFor="let state of states" [value]="state">{{state | split:'_' | join:' ' | titlecase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="smallInput">
+      <input matInput #zipCode maxlength="5" placeholder="Zip Code" [(ngModel)]="data.employee['zipCode']"
+             name="zipCode" class="zipCodeInput">
+      <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
+    </mat-form-field>
+
+  </div>
+
+  <!--todo: client-side validation-->
+
+  <div id="employeeStatusWrapper" class="flexboxContainer">
+
+    <mat-form-field class="smallInput">
+      <mat-select placeholder="Position Category" name="positionCategory"
+                  [(ngModel)]="data.employee['positionCategory']">
+        <mat-option *ngFor="let cat of positionCategories" [value]="cat">{{cat | split:'_' | join:' ' | titlecase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle
+      matInput
+      [color]="'accent'"
+      [(ngModel)]="data.employee['active']" name="active">
+      Is Active
+    </mat-slide-toggle>
+  </div>
+
+
+  <button mat-button (click)="cancel()">CANCEL</button>
+  <button mat-button (click)="saveEmployee()">SAVE</button>
+</form>

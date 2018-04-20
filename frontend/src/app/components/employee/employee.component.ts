@@ -1,5 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UserPictureService} from '../../services/user-picture.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar} from '@angular/material';
+import {EditEmployeeDialogComponent} from '../edit-employee-dialog/edit-employee-dialog.component';
+import {EmployeesService} from '../../services/employees.service';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+
+// import {MatDialog} from '@angular/material';
 
 @Component({
   selector: 'app-employee',
@@ -11,15 +16,64 @@ export class EmployeeComponent implements OnInit {
   @Input()
   employee;
 
-  employeePicture;
+  // used to save state when updating (in case it was canceled).
+  originalEmployee;
 
-  constructor() { }
+  constructor(public dialog: MatDialog, private employeesService: EmployeesService, public snackBar: MatSnackBar) {
+
+  }
 
   ngOnInit() {
-
+    this.saveUserState()
   }
 
   getFullName() {
     return `${this.employee.firstName} ${this.employee.middleInitial} ${this.employee.lastName}`;
+  }
+
+
+  editEmployee(): void {
+    const dialogRef = this.dialog.open(EditEmployeeDialogComponent, {
+      width: '500px',
+      data: {employee: this.employee}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'save') {
+        this.employeesService.saveEmployee(this.employee).subscribe(res => {
+          // todo: verify it was successful
+          this.snackBar.open(`${this.employee.firstName} ${this.employee.lastName} successfully saved!`,
+            'Okay', {
+              duration: 2000,
+            });
+
+          this.saveUserState();
+        })
+      } else {
+        this.employee = this.originalEmployee; // restore employee to its state
+      }
+      console.log(this.employee);
+    });
+  }
+
+  deleteEmployee(): void {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '500px',
+      data: {employee: this.employee}
+    });
+
+
+    dialogRef.componentInstance.title = 'Are you Sure';
+    dialogRef.componentInstance.message = 'Are you sure you want to delete this employee?';
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('result', result)
+    });
+  }
+
+
+  private saveUserState() {
+    // deep copy
+    this.originalEmployee = Object.assign({}, this.employee);
   }
 }

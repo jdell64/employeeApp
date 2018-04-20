@@ -1,0 +1,23 @@
+.flexboxContainer {
+  display: flex;
+  > * {
+    margin: 0 5px;
+  }
+}
+
+.medInput {
+  min-width: 150px;
+}
+
+.smallInput {
+  min-width: 100px;
+}
+
+.xSmallInput {
+  min-width: 75px;
+}
+
+#employeeStatusWrapper {
+  justify-content: space-between;
+  align-items: center;
+}

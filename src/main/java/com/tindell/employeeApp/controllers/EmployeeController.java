@@ -15,12 +15,6 @@ public class EmployeeController {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    // TODO: remove this
-    @RequestMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot with Docker!";
-    }
-
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/employees")
     public Iterable<Employee> employee() {
