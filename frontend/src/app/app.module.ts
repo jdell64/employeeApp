@@ -11,11 +11,10 @@ import {EmployeeComponent} from './components/employee/employee.component';
 import {TitleCasePipe} from '@angular/common';
 import {EditEmployeeDialogComponent} from './components/edit-employee-dialog/edit-employee-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { SplitPipe } from './pipes/split.pipe';
-import { JoinPipe } from './pipes/join.pipe';
-import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { HomeComponent } from './components/home/home.component';
-import { SearchResultsComponent } from './components/search-results/search-results.component';
+import {SplitPipe} from './pipes/split.pipe';
+import {JoinPipe} from './pipes/join.pipe';
+import {ConfirmDialogComponent} from './components/confirm-dialog/confirm-dialog.component';
+import {HomeComponent} from './components/home/home.component';
 import {SearchService} from './services/search.service';
 
 @NgModule({
@@ -28,7 +27,6 @@ import {SearchService} from './services/search.service';
     JoinPipe,
     ConfirmDialogComponent,
     HomeComponent,
-    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
