@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -96,8 +97,12 @@ public class EmployeeController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/api/employees/{id}")
     public String delete(@PathVariable String id) {
         employeeRepository.deleteById(id);
-
         return "";
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/api/employees/search")
+    public List<Employee> search(@RequestParam String lastName) {
+        return employeeRepository.findByLastNameContainingIgnoreCase(lastName);
     }
 
 }

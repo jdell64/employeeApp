@@ -53,26 +53,6 @@ export class EmployeesComponent implements OnInit {
       // update is searching... and if no results...
     });
 
-    /**
-     this.hasQueryString.subscribe(beenSearched => {
-      console.log('been searched', beenSearched);
-      if (beenSearched) {
-        // this.employeesBS.next(this.searchResults);
-        this.employees = this.searchResults;
-      } else {
-        console.log(this.allEmployees);
-        this.employeesService.getEmployees().take(1).subscribe(allEmps => this.employees = allEmps);
-        // this.employeesBS.next(this.allEmployees);
-        // this.employees = this.allEmployees;
-      }
-      console.log('emps', this.employees)
-    })
-     */
-    // this.employeesBS.subscribe(emps => {
-    //   console.log('emsp', emps)
-    //   this.employees = emps
-    // });
-
   }
 
 
