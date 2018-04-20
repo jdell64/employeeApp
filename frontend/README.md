@@ -4,6 +4,11 @@
 I have a proxy.conf.json file. This will proxy my api calls to the backend, but this should not be used for production. 
 I believe something like nginx should be used.
 
+### todo:
+- https://pusher.com/websockets
+- https://medium.com/oril/spring-boot-websockets-angular-5-f2f4b1c14cee
+
+
 ## Development server
 
 Run ` ng serve --proxy-config ./proxy.conf.json ` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

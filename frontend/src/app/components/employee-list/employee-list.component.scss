@@ -1,0 +1,23 @@
+#employeeHolder {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#addEmployeeButton {
+  width: 270px;
+  height: 270px;
+  border: 5px dotted;
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  cursor: pointer;
+  #addEmployeeLbl {
+
+  }
+  #addEmployeeIcon {
+    font-size: 60px;
+  }
+}

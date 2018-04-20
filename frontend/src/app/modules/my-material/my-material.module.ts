@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   MatButtonModule, MatCardModule, MatToolbarModule, MatFormFieldModule,
-  MatInputModule, MatSlideToggleModule, MatSelectModule, MatSnackBarModule
+  MatInputModule, MatSlideToggleModule, MatSelectModule, MatSnackBarModule, MatProgressBarModule
 } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
 
@@ -15,7 +15,8 @@ const myMaterialModules = [
   MatInputModule,
   MatSlideToggleModule,
   MatSelectModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatProgressBarModule
 ];
 
 @NgModule({

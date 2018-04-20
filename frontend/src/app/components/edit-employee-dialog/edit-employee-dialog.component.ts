@@ -35,7 +35,7 @@ export class EditEmployeeDialogComponent implements OnInit {
   }
 
   saveEmployee() {
-    this.dialogRef.close('save')
+    this.dialogRef.close({result: 'save', employee: this.data.employee})
   }
 
   cancel() {

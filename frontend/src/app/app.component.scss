@@ -1,0 +1,11 @@
+#toolbar {
+  #searchForm, #searchContainer {
+    width: 100%;
+    /deep/ .mat-input-wrapper {
+      margin-left: 20px;
+      .mat-input-infix {
+        margin-top: 30px;
+      }
+    }
+  }
+}

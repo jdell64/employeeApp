@@ -1,33 +1,34 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class EmployeesService {
 
-  private httpOptions = { headers: new HttpHeaders().set('Content-Type', 'application/json') };
+  private httpOptions = {headers: new HttpHeaders().set('Content-Type', 'application/json')};
 
 
   constructor(private http: HttpClient) {
   }
 
-  getEmployees() { // todo: move all routes to a global routes file
-    return this.http.get('/api/employees', this.httpOptions);
+  getEmployees(): Observable<any[]> { // todo: move all routes to a global routes file
+    return this.http.get<any[]>('/api/employees', this.httpOptions);
   }
 
 
-
-  saveEmployee(employee) {
-    return this.http.put(`/api/employees/${employee.id}`, employee, this.httpOptions)
+  saveEmployee(employee): Observable<any> {
+    return this.http.put<any>(`/api/employees/${employee.id}`, employee, this.httpOptions)
   }
 
-  // TODO:
-  deleteEmployee(employee) {
-
-  }
-  createEmployee() {
-
+  deleteEmployee(employee): Observable<string> {
+    console.log('in delete service', employee);
+    return this.http.delete<string>(`/api/employees/${employee.id}`, this.httpOptions);
   }
 
+
+  createEmployee(employee): Observable<any> {
+    return this.http.post<any>(`/api/employees`, employee, this.httpOptions)
+  }
 
 
   // EMPLOYEE METADATA

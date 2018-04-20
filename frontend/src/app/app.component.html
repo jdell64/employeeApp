@@ -1,8 +1,15 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" id="toolbar">
   <mat-toolbar-row>
     <button mat-button>{{title}}</button>
+    <form [formGroup]="searchForm" novalidate id="searchForm">
+      <mat-input-container id="searchContainer">
+        <input #search matInput placeholder="Search by last name" id="searchInput"
+               formControlName="search" type="search" (input)="onSearchTyped($event.target.value)"/>
+      </mat-input-container>
+    </form>
   </mat-toolbar-row>
 </mat-toolbar>
+<mat-progress-bar *ngIf="searching" [mode]="'indeterminate'"></mat-progress-bar>
 
 <div id="mainContent">
   <router-outlet></router-outlet>
