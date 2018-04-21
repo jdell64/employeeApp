@@ -47,10 +47,11 @@ public class Employee {
         this.lastModified = new Date();
     }
 
-    public Employee(String lastName, String middleInitial, String emailAddress, Long phoneNumber,
+    public Employee(String firstName, String lastName, String middleInitial, String emailAddress, Long phoneNumber,
                     EmployeeConstants.PositionCategory positionCategory, Date dateHired,
                     String address1, String address2, String city, EmployeeConstants.States state, Integer zip,
                     Boolean isActive) {
+        this.firstName = firstName;
         this.lastName = lastName;
         this.middleInitial = middleInitial;
         this.emailAddress = emailAddress;

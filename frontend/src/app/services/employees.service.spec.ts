@@ -8,7 +8,7 @@ describe('EmployeesService', () => {
     TestBed.configureTestingModule({
       imports: [
         HttpClientTestingModule
-      ]
+      ],
       providers: [EmployeesService]
     });
   });
