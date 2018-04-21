@@ -64,7 +64,6 @@ export class EmployeeListComponent implements OnInit {
         const employee = result.employee;
         this.employeesService.createEmployee(employee).subscribe(res => {
           // todo: verify it was successful
-          // console.log(res)
           this.snackBar.open(`${employee.firstName} ${employee.lastName} successfully added!`,
             'Okay', {
               duration: 2000,
