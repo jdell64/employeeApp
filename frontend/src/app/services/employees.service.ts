@@ -21,7 +21,6 @@ export class EmployeesService {
   }
 
   deleteEmployee(employee): Observable<string> {
-    console.log('in delete service', employee);
     return this.http.delete<string>(`/api/employees/${employee.id}`, this.httpOptions);
   }
 

@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {EmployeesComponent} from './components/employee-list/employee-list.component';
+import {EmployeeListComponent} from './components/employee-list/employee-list.component';
 import {EmployeesService} from './services/employees.service';
 import {HttpClientModule} from '@angular/common/http';
 import {MyMaterialModule} from './modules/my-material/my-material.module';
@@ -20,7 +20,7 @@ import {SearchService} from './services/search.service';
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeesComponent,
+    EmployeeListComponent,
     EmployeeComponent,
     EditEmployeeDialogComponent,
     SplitPipe,
@@ -39,7 +39,7 @@ import {SearchService} from './services/search.service';
 
   ],
   entryComponents: [EditEmployeeDialogComponent, ConfirmDialogComponent],
-  providers: [EmployeesService, TitleCasePipe, SearchService],
+  providers: [EmployeesService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

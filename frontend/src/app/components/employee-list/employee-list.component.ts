@@ -12,7 +12,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
   templateUrl: './employee-list.component.html',
   styleUrls: ['./employee-list.component.scss']
 })
-export class EmployeesComponent implements OnInit {
+export class EmployeeListComponent implements OnInit {
 
   employeesBS: BehaviorSubject<any[]>;
 
@@ -26,11 +26,8 @@ export class EmployeesComponent implements OnInit {
 
   constructor(public dialog: MatDialog, private employeesService: EmployeesService,
               public snackBar: MatSnackBar, private searchService: SearchService) {
-    // this.searchResults = new BehaviorSubject([]);
     this.hasQueryString = new BehaviorSubject(false);
     this.employeesBS = new BehaviorSubject([]);
-    // this.searchResults = new BehaviorSubject([]);
-
   }
 
   // TODO: install auto unsubscribe

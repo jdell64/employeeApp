@@ -6,7 +6,12 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 describe('SearchService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SearchService, HttpClientTestingModule]
+      imports: [
+        HttpClientTestingModule
+      ],
+      providers: [
+        SearchService
+      ]
     });
   });
 
