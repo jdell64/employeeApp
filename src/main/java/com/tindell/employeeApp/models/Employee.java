@@ -19,11 +19,11 @@ public class Employee {
     private String id;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    @Size(min = 1, max = 30)
     private String firstName;
 
     @NotNull
-    @Size(min = 2, max = 30)
+    @Size(min = 1, max = 30)
     private String lastName;
 
     @Size(max = 1)
@@ -61,7 +61,7 @@ public class Employee {
     @NotNull
     @Max(99999)
     private Integer zip;
-    
+
     @NotNull
     private Boolean isActive;
 

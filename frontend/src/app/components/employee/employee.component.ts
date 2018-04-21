@@ -16,7 +16,7 @@ export class EmployeeComponent implements OnInit {
   @Input()
   employee;
 
-  @Output() onEdit = new EventEmitter<any>();
+  @Output() onSave = new EventEmitter<any>();
   @Output() onDelete = new EventEmitter<any>();
 
   // used to save state when updating (in case it was canceled).
@@ -27,7 +27,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.saveUserState()
+    this.saveUserState();
+    // console.log(this.employee)
   }
 
   getFullName() {
@@ -42,16 +43,27 @@ export class EmployeeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      // console.log('edited', result);
       if (result && result.result === 'save') {
-        this.employeesService.saveEmployee(this.employee).subscribe(res => {
-          // todo: verify it was successful
-          this.snackBar.open(`${this.employee.firstName} ${this.employee.lastName} successfully saved!`,
-            'Okay', {
-              duration: 2000,
+        this.employeesService.saveEmployee(result.employee).subscribe(res => {
+            this.snackBar.open(`${result.employee.firstName} ${result.employee.lastName} successfully saved!`,
+              'Okay', {
+                duration: 2000,
+              });
+            this.saveUserState();
+            this.onSave.emit(result.employee);
+          }, error => {
+            let msg = '';
+            error.error.errors.forEach((err) => {
+              msg = msg + `${err.objectName} ${err.field} ${err.defaultMessage}. `
             });
-          this.saveUserState();
-          this.onEdit.emit(this.employee);
-        })
+
+            this.snackBar.open(`Error saving: ${msg}`,
+              'Okay', {
+                duration: 10000,
+              });
+          }
+        )
       } else {
         this.employee = this.originalEmployee; // restore employee to its state
       }
@@ -69,13 +81,16 @@ export class EmployeeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // console.log(this.employee)
-        // this.onDelete.emit(this.employee);
         this.employeesService.deleteEmployee(this.employee).subscribe(res => {
-          // todo: verify it was successful
+          this.onDelete.emit(this.employee);
           this.snackBar.open(`${this.employee.firstName} ${this.employee.lastName} successfully deleted.`,
             'Okay', {
               duration: 2000,
+            });
+        }, error => {
+          this.snackBar.open(`Unable to delete ${this.employee.firstName} ${this.employee.lastName}`,
+            'Okay', {
+              duration: 10000,
             });
         });
       }

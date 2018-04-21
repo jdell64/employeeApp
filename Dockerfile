@@ -11,4 +11,4 @@ COPY target/employeeApp-0.0.1-SNAPSHOT.jar $PROJECT_HOME/employee-app-demo.jar
 WORKDIR $PROJECT_HOME
 EXPOSE 8080
 
-CMD ["java", "-Dspring.data.mongodb.uri=mongodb://employee-app:27017/springmongo-demo","-Djava.security.egd=file:/dev/./urandom","-jar","./employee-app-demo.jar"]
+CMD ["java", "-Dspring.data.mongodb.uri=mongodb://employee-app:27017/employee-app","-Djava.security.egd=file:/dev/./urandom","-jar","./employee-app-demo.jar"]

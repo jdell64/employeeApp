@@ -78,4 +78,9 @@ export class EmployeeListComponent implements OnInit {
   employeeDeleted(employee) {
     this.employees = this.employees.filter(emp => emp.id !== employee.id);
   }
+
+  employeeSaved(employee) {
+    const employeeIndex = this.employees.indexOf(this.employees.find(emp => emp.id === employee.id));
+    this.employees[employeeIndex] = employee
+  }
 }

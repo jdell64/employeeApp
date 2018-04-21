@@ -9,15 +9,20 @@
 
   <ng-container *ngIf="employees.length > 0; else noResults">
     <div *ngFor="let employee of employees">
-      <app-employee [employee]="employee" (onDelete)="employeeDeleted($event)"></app-employee>
-    </div>
-    <div id="addEmployeeButton" (click)="addEmployee()">
-      <span id="addEmployeeLbl">Add Employee</span>
-      <span id="addEmployeeIcon">+</span>
+      <app-employee [employee]="employee" (onDelete)="employeeDeleted($event)"
+                    (onSave)="employeeSaved($event)"></app-employee>
     </div>
   </ng-container>
+
   <ng-template #noResults>
-    <p>No Employees.</p>
+    <div class="full-width">
+      <p>No Employees.</p>
+    </div>
   </ng-template>
+
+  <div id="addEmployeeButton" (click)="addEmployee()">
+    <span id="addEmployeeLbl">Add Employee</span>
+    <span id="addEmployeeIcon">+</span>
+  </div>
 
 </div>

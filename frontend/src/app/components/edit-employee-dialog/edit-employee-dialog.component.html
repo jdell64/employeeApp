@@ -1,53 +1,70 @@
-<form class="employee-form">
+<form class="employee-form" [formGroup]="editEmployeeForm">
+
+  <!--todo client side validation-->
+
   <div id="nameContainer" class="flexboxContainer">
     <mat-form-field class="medInput">
-      <input matInput placeholder="First name" [(ngModel)]="data.employee['firstName']" name="firstName" required>
+      <input matInput placeholder="First name" formControlName="firstName"
+             class="form-control" name="firstName" required>
     </mat-form-field>
 
     <mat-form-field class="xSmallInput">
-      <input matInput placeholder="Middle initial" [(ngModel)]="data.employee['middleInitial']" name="middleInitial"
-             required>
+      <input matInput placeholder="Middle initial" formControlName="middleInitial" name="middleInitial">
     </mat-form-field>
 
     <mat-form-field class="medInput">
-      <input matInput placeholder="Last name" [(ngModel)]="data.employee['lastName']" name="lastName" required>
+      <input matInput placeholder="Last name" formControlName="lastName" name="lastName" required>
     </mat-form-field>
+
   </div>
 
+
   <mat-form-field class="full-width">
-    <textarea matInput placeholder="Address" [(ngModel)]="data.employee['address1']" name="address1"
+    <input matInput placeholder="Email" formControlName="emailAddress" name="emailAddress"
+           pattern=".+\@.+\..+" required>
+  </mat-form-field>
+
+
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Address" formControlName="address1" name="address1"
               required></textarea>
   </mat-form-field>
 
   <mat-form-field class="full-width">
-    <textarea name="address2" matInput placeholder="Address 2" [(ngModel)]="data.employee['address2']"></textarea>
+    <textarea name="address2" matInput placeholder="Address 2" formControlName="address2"></textarea>
   </mat-form-field>
 
   <div id="addressContainer" class="flexboxContainer">
     <mat-form-field>
-      <input matInput placeholder="City" [(ngModel)]="data.employee['city']" name="city" required>
+      <input matInput placeholder="City" formControlName="city" name="city" required>
     </mat-form-field>
 
     <mat-form-field class="smallInput">
-      <mat-select placeholder="State" name="state" [(ngModel)]="data.employee['state']" required>
+      <mat-select placeholder="State" name="state" formControlName="state" required>
         <mat-option *ngFor="let state of states" [value]="state">{{state | split:'_' | join:' ' | titlecase}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field class="smallInput">
-      <input matInput #zipCode maxlength="5" placeholder="Zip Code" [(ngModel)]="data.employee['zipCode']"
-             name="zipCode" class="zipCodeInput" required>
+      <input matInput #zipCode maxlength="5" placeholder="Zip Code" formControlName="zip"
+             name="zip" class="zipCodeInput" required>
       <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
     </mat-form-field>
-
   </div>
+
+  <mat-input-container class="full-width">
+    <input matInput placeholder="Phone number" formControlName="phoneNumber" name="phoneNumber"
+           type="text" #phoneNumber [minlength]="14" [maxlength]="14" phoneMask ngControl="phone" minlength="10"
+           required>
+  </mat-input-container>
+
 
   <div id="employeeStatusWrapper" class="flexboxContainer">
 
     <mat-form-field class="smallInput">
       <mat-select placeholder="Position Category" name="positionCategory"
-                  [(ngModel)]="data.employee['positionCategory']" required>
+                  formControlName="positionCategory" required>
         <mat-option *ngFor="let cat of positionCategories" [value]="cat">{{cat | split:'_' | join:' ' | titlecase}}
         </mat-option>
       </mat-select>
@@ -56,12 +73,13 @@
     <mat-slide-toggle
       matInput
       [color]="'accent'"
-      [(ngModel)]="data.employee['active']" name="active">
+      formControlName="active" name="active">
       Is Active
     </mat-slide-toggle>
   </div>
 
-
   <button mat-button (click)="cancel()">CANCEL</button>
-  <button mat-button (click)="saveEmployee()">SAVE</button>
+  <button mat-raised-button (click)="saveEmployee()" [disabled]="editEmployeeForm.status!== 'VALID'">SAVE</button>
+
 </form>
+
