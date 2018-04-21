@@ -43,7 +43,7 @@ export class EmployeeListComponent implements OnInit {
       }
       return this.searchService.searchByLastName(s)
     }).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       // this.searchResults = res;
       this.employees = res;
       this.searchService.setIsSearching(false);

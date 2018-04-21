@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import java.util.Date;
 
@@ -15,13 +17,26 @@ public class Employee {
 
     @Id
     private String id;
+
+    @NotNull
+    @Size(min = 2, max = 30)
     private String firstName;
+
+    @NotNull
+    @Size(min = 2, max = 30)
     private String lastName;
+
+    @Size(max = 1)
     private String middleInitial;
 
+    @NotNull
     @Email(message = "Email should be valid")
     private String emailAddress;
+
+    @NotNull
     private Long phoneNumber;
+
+    @NotNull
     private EmployeeConstants.PositionCategory positionCategory;
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
@@ -33,13 +48,21 @@ public class Employee {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dateHired;
 
+    @NotNull
     private String address1;
     private String address2;
+
+    @NotNull
     private String city;
+
+    @NotNull
     private EmployeeConstants.States state;
 
+    @NotNull
     @Max(99999)
     private Integer zip;
+    
+    @NotNull
     private Boolean isActive;
 
 

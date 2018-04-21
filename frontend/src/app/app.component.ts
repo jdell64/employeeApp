@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private searchService: SearchService) {
     this.lastNameSearch.debounceTime(700).distinctUntilChanged().subscribe(term => {
-      console.log('q', term);
+      // console.log('q', term);
       this.searchService.setQueryString(term);
     });
 
@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   }
 
   onSearchTyped(value) {
-    console.log(value);
+    // console.log(value);
     this.searchService.setIsSearching(true);
     this.lastNameSearch.next(value);
   }

@@ -9,7 +9,6 @@ import {EmployeesService} from '../../services/employees.service';
 })
 export class EditEmployeeDialogComponent implements OnInit {
 
-
   states;
   positionCategories;
 

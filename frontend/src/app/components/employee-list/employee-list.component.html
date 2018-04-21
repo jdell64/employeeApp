@@ -1,22 +1,23 @@
 <div id="employeeHolder">
 
-  <ng-container *ngIf="!isSearching; else gettingResults">
-    <ng-container *ngIf="employees.length > 0; else noResults">
-      <div *ngFor="let employee of employees">
-        <!--{{employee | json}}-->
-        <app-employee [employee]="employee" (onDelete)="employeeDeleted($event)"></app-employee>
-      </div>
-      <div id="addEmployeeButton" (click)="addEmployee()">
-        <span id="addEmployeeLbl">Add Employee</span>
-        <span id="addEmployeeIcon">+</span>
-      </div>
-    </ng-container>
-    <ng-template #noResults>
-      <p>No Employees.</p>
-    </ng-template>
+  <ng-container #gettingResults *ngIf="isSearching">
+    <div class="full-width">
+      <p>Searching for employees...
+      </p>
+    </div>
   </ng-container>
 
-  <ng-template #gettingResults>
-    <p>Searching for employees...</p>
+  <ng-container *ngIf="employees.length > 0; else noResults">
+    <div *ngFor="let employee of employees">
+      <app-employee [employee]="employee" (onDelete)="employeeDeleted($event)"></app-employee>
+    </div>
+    <div id="addEmployeeButton" (click)="addEmployee()">
+      <span id="addEmployeeLbl">Add Employee</span>
+      <span id="addEmployeeIcon">+</span>
+    </div>
+  </ng-container>
+  <ng-template #noResults>
+    <p>No Employees.</p>
   </ng-template>
+
 </div>

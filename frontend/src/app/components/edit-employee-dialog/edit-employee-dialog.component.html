@@ -1,20 +1,22 @@
 <form class="employee-form">
   <div id="nameContainer" class="flexboxContainer">
     <mat-form-field class="medInput">
-      <input matInput placeholder="First name" [(ngModel)]="data.employee['firstName']" name="firstName">
+      <input matInput placeholder="First name" [(ngModel)]="data.employee['firstName']" name="firstName" required>
     </mat-form-field>
 
     <mat-form-field class="xSmallInput">
-      <input matInput placeholder="Middle initial" [(ngModel)]="data.employee['middleInitial']" name="middleInitial">
+      <input matInput placeholder="Middle initial" [(ngModel)]="data.employee['middleInitial']" name="middleInitial"
+             required>
     </mat-form-field>
 
     <mat-form-field class="medInput">
-      <input matInput placeholder="Last name" [(ngModel)]="data.employee['lastName']" name="lastName">
+      <input matInput placeholder="Last name" [(ngModel)]="data.employee['lastName']" name="lastName" required>
     </mat-form-field>
   </div>
 
   <mat-form-field class="full-width">
-    <textarea matInput placeholder="Address" [(ngModel)]="data.employee['address1']" name="address1"></textarea>
+    <textarea matInput placeholder="Address" [(ngModel)]="data.employee['address1']" name="address1"
+              required></textarea>
   </mat-form-field>
 
   <mat-form-field class="full-width">
@@ -23,11 +25,11 @@
 
   <div id="addressContainer" class="flexboxContainer">
     <mat-form-field>
-      <input matInput placeholder="City" [(ngModel)]="data.employee['city']" name="city">
+      <input matInput placeholder="City" [(ngModel)]="data.employee['city']" name="city" required>
     </mat-form-field>
 
     <mat-form-field class="smallInput">
-      <mat-select placeholder="State" name="state" [(ngModel)]="data.employee['state']">
+      <mat-select placeholder="State" name="state" [(ngModel)]="data.employee['state']" required>
         <mat-option *ngFor="let state of states" [value]="state">{{state | split:'_' | join:' ' | titlecase}}
         </mat-option>
       </mat-select>
@@ -35,19 +37,17 @@
 
     <mat-form-field class="smallInput">
       <input matInput #zipCode maxlength="5" placeholder="Zip Code" [(ngModel)]="data.employee['zipCode']"
-             name="zipCode" class="zipCodeInput">
+             name="zipCode" class="zipCodeInput" required>
       <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
     </mat-form-field>
 
   </div>
 
-  <!--todo: client-side validation-->
-
   <div id="employeeStatusWrapper" class="flexboxContainer">
 
     <mat-form-field class="smallInput">
       <mat-select placeholder="Position Category" name="positionCategory"
-                  [(ngModel)]="data.employee['positionCategory']">
+                  [(ngModel)]="data.employee['positionCategory']" required>
         <mat-option *ngFor="let cat of positionCategories" [value]="cat">{{cat | split:'_' | join:' ' | titlecase}}
         </mat-option>
       </mat-select>
