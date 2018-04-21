@@ -30,6 +30,10 @@ export class EditEmployeeDialogComponent implements OnInit {
 
 
   ngOnInit() {
+    if (!this.data.employee['active']) { // if it is null, set it to false
+      this.data.employee['active'] = false;
+    }
+
     this.editEmployeeForm = this._fb.group({
       firstName: [this.data.employee['firstName'] || '', Validators.required],
       middleInitial: [this.data.employee['middleInitial'] || ''],
@@ -45,7 +49,7 @@ export class EditEmployeeDialogComponent implements OnInit {
         Validators.minLength(5), Validators.maxLength(5)]
       ],
       positionCategory: [this.data.employee['positionCategory'] || '', Validators.required],
-      active: [this.data.employee['active'] || true, Validators.required],
+      active: [this.data.employee['active'], Validators.required],
       id: [this.data.employee['id'] || null]
     });
 
