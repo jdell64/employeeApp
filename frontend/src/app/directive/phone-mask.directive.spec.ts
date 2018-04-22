@@ -1,6 +1,6 @@
 import {PhoneMaskDirective} from './phone-mask.directive';
 import {Component, DebugElement} from '@angular/core';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {FormsModule, NgControl, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 
@@ -36,13 +36,6 @@ describe('PhoneMaskDirective', () => {
     ngControl = inputEl.injector.get(NgControl)
   });
 
-  beforeEach(async(() => {
-    // The magic sauce!!
-    // Because this is in an async wrapper it will automatically wait
-    // for the call to whenStable() to complete
-    fixture.detectChanges();
-    fixture.whenStable();
-  }));
 
   it('should create an instance', () => {
     const directive = new PhoneMaskDirective(ngControl);
