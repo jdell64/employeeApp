@@ -1,11 +1,11 @@
 version: '3.1'
 
 services:
-  employeeapp:
+  employeeappapi: #rename
     build: .
     # image: registry.gitlab.com/idgst/employee-app-demo:latest
     restart: always
-    container_name: employeeapp
+    container_name: employee-app-api
     ports:
       - 8182:8080
     working_dir: /opt/app
@@ -14,10 +14,22 @@ services:
 
   mongo:
     image: mongo
-    container_name: employee-app
+    container_name: employee-app-db #rename
     ports:  # for demo/debug purpose only
       - 27018:27017
     volumes:
       - $HOME/data/employee-app-data:/data/db
       - $HOME/data/employee-app-bkp:/data/bkp
     restart: always
+
+  employeeweb:
+    build: ./frontend
+    restart: always
+    container_name: employee-app-web
+    ports:
+      - 4000:4000
+    working_dir: /app
+    depends_on:
+      - employeeappapi
+    links:
+      - employeeappapi

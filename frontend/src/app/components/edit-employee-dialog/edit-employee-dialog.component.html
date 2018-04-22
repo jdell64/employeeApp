@@ -3,7 +3,7 @@
   <div id="nameContainer" class="flexboxContainer">
     <mat-form-field class="medInput">
       <input matInput placeholder="First name" formControlName="firstName"
-             class="form-control" name="firstName" required>
+             class="form-control" name="firstName" autocomplete="off" required>
     </mat-form-field>
 
     <mat-form-field class="xSmallInput">
@@ -11,7 +11,7 @@
     </mat-form-field>
 
     <mat-form-field class="medInput">
-      <input matInput placeholder="Last name" formControlName="lastName" name="lastName" required>
+      <input matInput placeholder="Last name" formControlName="lastName" name="lastName" autocomplete="off" required>
     </mat-form-field>
 
   </div>
@@ -19,13 +19,13 @@
 
   <mat-form-field class="full-width">
     <input matInput placeholder="Email" formControlName="emailAddress" name="emailAddress"
-           pattern=".+\@.+\..+" required>
+           pattern=".+\@.+\..+" autocomplete="off" required>
   </mat-form-field>
 
 
   <mat-form-field class="full-width">
     <textarea matInput placeholder="Address" formControlName="address1" name="address1"
-              required></textarea>
+              autocomplete="off" required></textarea>
   </mat-form-field>
 
   <mat-form-field class="full-width">
@@ -34,11 +34,11 @@
 
   <div id="addressContainer" class="flexboxContainer">
     <mat-form-field>
-      <input matInput placeholder="City" formControlName="city" name="city" required>
+      <input matInput placeholder="City" formControlName="city" name="city" autocomplete="off" required>
     </mat-form-field>
 
     <mat-form-field class="smallInput">
-      <mat-select placeholder="State" name="state" formControlName="state" required>
+      <mat-select placeholder="State" name="state" formControlName="state" autocomplete="off" required>
         <mat-option *ngFor="let state of states" [value]="state">{{state | split:'_' | join:' ' | titlecase}}
         </mat-option>
       </mat-select>
@@ -46,7 +46,7 @@
 
     <mat-form-field class="smallInput">
       <input matInput #zipCode maxlength="5" placeholder="Zip Code" formControlName="zip"
-             name="zip" class="zipCodeInput" required>
+             name="zip" class="zipCodeInput" autocomplete="off" required>
       <mat-hint align="end">{{zipCode.value.length}} / 5</mat-hint>
     </mat-form-field>
   </div>
@@ -54,7 +54,7 @@
   <mat-input-container class="full-width">
     <input matInput placeholder="Phone number" formControlName="phoneNumber" name="phoneNumber"
            type="text" #phoneNumber [minlength]="14" [maxlength]="14" phoneMask ngControl="phone" minlength="10"
-           required>
+           autocomplete="off" required>
   </mat-input-container>
 
 
@@ -62,7 +62,7 @@
 
     <mat-form-field class="smallInput">
       <mat-select placeholder="Position Category" name="positionCategory"
-                  formControlName="positionCategory" required>
+                  formControlName="positionCategory" autocomplete="off" required>
         <mat-option *ngFor="let cat of positionCategories" [value]="cat">{{cat | split:'_' | join:' ' | titlecase}}
         </mat-option>
       </mat-select>
