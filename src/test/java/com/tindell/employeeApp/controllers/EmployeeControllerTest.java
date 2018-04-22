@@ -19,17 +19,13 @@ import static org.mockito.Mockito.when;
 
 public class EmployeeControllerTest {
 
+    List<Employee> employeeList = new ArrayList<>();
     @Mock
     private EmployeeRepository employeeRepository;
 
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-    }
-
-    @Test
-    public void employee() {
-        List<Employee> employeeList = new ArrayList<>();
         employeeList.add(new Employee(
                 "First", "Last", "M", "first@last.com", (long) 1231231234,
                 EmployeeConstants.PositionCategory.DIRECT, new Date(), "123 Main St", "",
@@ -38,6 +34,10 @@ public class EmployeeControllerTest {
                 "First", "Last2", "M", "first@last.com", (long) 1231231234,
                 EmployeeConstants.PositionCategory.DIRECT, new Date(), "123 Main St", "",
                 "Rockville", EmployeeConstants.States.MARYLAND, 12345, true));
+    }
+
+    @Test
+    public void index() {
         when(employeeRepository.findAll()).thenReturn(employeeList);
 
         Iterable<Employee> result = employeeRepository.findAll();
@@ -62,5 +62,6 @@ public class EmployeeControllerTest {
 
     @Test
     public void search() {
+
     }
 }

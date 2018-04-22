@@ -1,8 +1,11 @@
 <mat-toolbar color="primary" id="toolbar">
   <mat-toolbar-row>
-    <button mat-button>{{title}}</button>
+    <button mat-button id="homeButton">
+      <img src="assets/people-logo.png" id="logo">
+      <span id="appTitle">{{title}}</span>
+    </button>
     <form [formGroup]="searchForm" novalidate id="searchForm">
-      <mat-input-container id="searchContainer">
+      <mat-input-container id="searchContainer" color="accent">
         <input #search matInput placeholder="Search by last name" id="searchInput"
                formControlName="search" type="search" (input)="onSearchTyped($event.target.value)"/>
       </mat-input-container>
@@ -15,3 +18,8 @@
   <router-outlet></router-outlet>
 </div>
 
+
+<div id="creditWrapper">
+  <small>"Employee App" was written by Jeff Tindell.</small>
+  <small>Icon "people" by Andrew Hainen from the Noun Project</small>
+</div>

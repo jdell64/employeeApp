@@ -1,10 +1,24 @@
 #toolbar {
+  #homeButton {
+    width: 400px;
+    #logo {
+      -webkit-filter: invert(1);
+      filter: invert(1);
+      width: 50px;
+    }
+
+    #appTitle {
+      margin-left: 10px;
+      font-size: xx-large;
+      font-weight: bold;
+    }
+  }
+
   #searchForm, #searchContainer {
     width: 100%;
+    font-size: small;
     /deep/ .mat-input-wrapper {
-      margin-left: 20px;
       .mat-input-infix {
-        margin-top: 30px;
       }
     }
   }

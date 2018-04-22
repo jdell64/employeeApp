@@ -18,7 +18,7 @@ public class EmployeeController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/api/employees")
-    public Iterable<Employee> employee() {
+    public Iterable<Employee> index() {
         return employeeRepository.findAll();
     }
 

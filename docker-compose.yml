@@ -1,7 +1,18 @@
 version: '3.1'
 
 services:
-  employeeappapi: #rename
+# password doesn't work this way... there is a work around, but for now:
+#docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/portainer:/data portainer/portainer
+#  portainer:
+#    ports:
+#      - '9000:9000'
+#    restart: always
+#    volumes:
+#        - '/var/run/docker.sock:/var/run/docker.sock'
+#        - '/opt/portainer:/data'
+#    image: portainer/portainer
+
+  employeeappapi:
     build: .
     # image: registry.gitlab.com/idgst/employee-app-demo:latest
     restart: always
