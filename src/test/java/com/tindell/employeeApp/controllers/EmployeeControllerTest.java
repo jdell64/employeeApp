@@ -7,6 +7,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -20,8 +22,10 @@ import static org.mockito.Mockito.when;
 public class EmployeeControllerTest {
 
     List<Employee> employeeList = new ArrayList<>();
+
     @Mock
     private EmployeeRepository employeeRepository;
+
 
     @Before
     public void setup() {
@@ -34,6 +38,8 @@ public class EmployeeControllerTest {
                 "First", "Last2", "M", "first@last.com", (long) 1231231234,
                 EmployeeConstants.PositionCategory.DIRECT, new Date(), "123 Main St", "",
                 "Rockville", EmployeeConstants.States.MARYLAND, 12345, true));
+
+        employeeRepository.saveAll(employeeList);
     }
 
     @Test
@@ -46,6 +52,7 @@ public class EmployeeControllerTest {
 
     @Test
     public void save() {
+//        employeeRepository.findAll()
     }
 
     @Test

@@ -14,7 +14,7 @@ services:
 
   employeeappapi:
     build: .
-    # image: registry.gitlab.com/idgst/employee-app-demo:latest
+    image: jdell64/employee-app-api
     restart: always
     container_name: employee-app-api
     ports:
@@ -26,8 +26,8 @@ services:
   mongo:
     image: mongo
     container_name: employee-app-db #rename
-    ports:  # for demo/debug purpose only
-      - 27018:27017
+#    ports:  # for demo/debug purpose only
+#      - 27018:27017
     volumes:
       - $HOME/data/employee-app-data:/data/db
       - $HOME/data/employee-app-bkp:/data/bkp
@@ -37,6 +37,7 @@ services:
     build: ./frontend
     restart: always
     container_name: employee-app-web
+    image: jdell64/employee-app-web
     ports:
       - 4000:4000
     working_dir: /app

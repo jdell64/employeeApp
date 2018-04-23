@@ -12,6 +12,7 @@ https://start.spring.io/
 https://www.djamware.com/post/5a0673c880aca7739224ee21/mean-stack-angular-5-crud-web-application-example
 http://www.baeldung.com/exception-handling-for-rest-with-spring
 http://www.springboottutorial.com/spring-boot-validation-for-rest-services
+https://stackoverflow.com/questions/15922991/is-spring-annotation-controller-same-as-service
 
 
 ### TODO:
